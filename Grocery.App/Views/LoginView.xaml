@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:Grocery.App.ViewModels"
              x:Class="Grocery.App.Views.LoginView"
+             
              x:DataType="vm:LoginViewModel"
              Title="LoginView">
     <StackLayout Padding="20" VerticalOptions="Center">
