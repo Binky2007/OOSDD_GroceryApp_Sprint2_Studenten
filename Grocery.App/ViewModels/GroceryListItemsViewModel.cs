@@ -4,7 +4,6 @@ using Grocery.App.Views;
 using Grocery.Core.Interfaces.Services;
 using Grocery.Core.Models;
 using System.Collections.ObjectModel;
-using HealthKit;
 
 namespace Grocery.App.ViewModels
 {
@@ -17,13 +16,13 @@ namespace Grocery.App.ViewModels
         public ObservableCollection<Product> AvailableProducts { get; set; } = [];
 
         [ObservableProperty]
-        GroceryList groceryList = new(0, "None", DateOnly.MinValue, "", 0);
+        GroceryList _groceryList = new(0, "None", DateOnly.MinValue, "", 0);
 
         public GroceryListItemsViewModel(IGroceryListItemsService groceryListItemsService, IProductService productService)
         {
             _groceryListItemsService = groceryListItemsService;
             _productService = productService;
-            Load(groceryList.Id);
+            Load(_groceryList.Id);
         }
 
         private void Load(int id)
