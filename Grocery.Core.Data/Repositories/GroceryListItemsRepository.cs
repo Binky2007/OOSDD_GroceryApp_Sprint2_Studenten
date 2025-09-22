@@ -5,11 +5,11 @@ namespace Grocery.Core.Data.Repositories
 {
     public class GroceryListItemsRepository : IGroceryListItemsRepository
     {
-        private readonly List<GroceryListItem> groceryListItems;
+        private readonly List<GroceryListItem> _groceryListItems;
 
         public GroceryListItemsRepository()
         {
-            groceryListItems = [
+            _groceryListItems = [
                 new GroceryListItem(1, 1, 1, 3),
                 new GroceryListItem(2, 1, 2, 1),
                 new GroceryListItem(3, 1, 3, 4),
@@ -20,19 +20,19 @@ namespace Grocery.Core.Data.Repositories
 
         public List<GroceryListItem> GetAll()
         {
-            return groceryListItems;
+            return _groceryListItems;
         }
 
         public List<GroceryListItem> GetAllOnGroceryListId(int id)
         {
-            return groceryListItems.Where(g => g.GroceryListId == id).ToList();
+            return _groceryListItems.Where(g => g.GroceryListId == id).ToList();
         }
 
         public GroceryListItem Add(GroceryListItem item)
         {
-            int newId = groceryListItems.Max(g => g.Id) + 1;
+            int newId = _groceryListItems.Max(g => g.Id) + 1;
             item.Id = newId;
-            groceryListItems.Add(item);
+            _groceryListItems.Add(item);
             return Get(item.Id);
         }
 
@@ -43,7 +43,7 @@ namespace Grocery.Core.Data.Repositories
 
         public GroceryListItem? Get(int id)
         {
-            return groceryListItems.FirstOrDefault(g => g.Id == id);
+            return _groceryListItems.FirstOrDefault(g => g.Id == id);
         }
 
         public GroceryListItem? Update(GroceryListItem item)
